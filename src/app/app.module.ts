@@ -12,6 +12,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CreateProjectComponent } from './components/create-project/create-project.component';
+import { AddEmployeComponent } from './components/add-employe/add-employe.component';
+import { ProfileComponent } from './components/profile/profile.component';
 // import { AgGridModule } from 'ag-grid-angular';
 // import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
@@ -21,6 +25,10 @@ import { LoginComponent } from './components/login/login.component';
     SidebarComponent,
     FooterComponent,
     LoginComponent,
+    RegisterComponent,
+    CreateProjectComponent,
+    AddEmployeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
