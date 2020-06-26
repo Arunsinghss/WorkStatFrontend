@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
 // import { AgGridModule } from 'ag-grid-angular';
 // import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
@@ -19,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
