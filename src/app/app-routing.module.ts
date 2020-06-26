@@ -13,7 +13,10 @@ const routes: Routes = [
   { path: 'add-project', component: CreateProjectComponent },
   { path: 'add-project/:id', component: CreateProjectComponent },
   { path: 'add-employee', component: AddEmployeComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  // { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
