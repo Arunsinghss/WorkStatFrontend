@@ -23,6 +23,10 @@ export class RegisterService {
     return this.httpclient.post(this.baseUrl + this.constantService.employee, requestParam);
   }
 
+  getEmployee() {
+    return this.httpclient.get(this.baseUrl + this.constantService.employee);
+  }
+
   getDesignation() {
     return this.httpclient.get(this.baseUrl + this.constantService.getDesignation);
   }

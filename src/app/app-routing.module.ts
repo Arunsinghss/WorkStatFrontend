@@ -6,6 +6,7 @@ import { CreateProjectComponent } from './components/create-project/create-proje
 import { AddEmployeComponent } from './components/add-employe/add-employe.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GetProjectComponent } from './components/get-project/get-project.component';
+import { EmployeelistComponent } from './components/employeelist/employeelist.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'add-project', component: CreateProjectComponent },
   { path: 'add-project/:id', component: CreateProjectComponent },
   { path: 'add-employee', component: AddEmployeComponent },
+  { path: 'employee-list', component: EmployeelistComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'projectlist', component: GetProjectComponent },
   // { path: 'page-not-found', component: PageNotFoundComponent },
