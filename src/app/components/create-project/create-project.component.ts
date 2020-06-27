@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { RegisterService } from 'src/app/services/api/register.service';
 import Swal from 'sweetalert2';
 import * as _moment from 'moment';
@@ -14,6 +13,7 @@ export class CreateProjectComponent implements OnInit {
   projectForm: FormGroup;
   loading = false;
   submitted = false;
+  dataFromApiEmployee: any;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -50,5 +50,11 @@ export class CreateProjectComponent implements OnInit {
 
   getDateformat(date) {
     return _moment(date).format('DD-MM-YYYY');
+  }
+
+  getEmployee() {
+    this.apiServices.getEmployee().subscribe((data: any) => {
+      this.dataFromApiEmployee = data;
+    });
   }
 }

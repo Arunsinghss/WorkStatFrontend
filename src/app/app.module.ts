@@ -35,7 +35,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddEmployeComponent,
     ProfileComponent,
     GetProjectComponent,
-    EmployeelistComponent
+    EmployeelistComponent,
   ],
   imports: [
     CommonModule,
