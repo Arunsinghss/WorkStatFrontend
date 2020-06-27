@@ -31,6 +31,14 @@ export class RegisterService {
     return this.httpclient.post(this.baseUrl + this.constantService.getDesignation, requestParam);
   }
 
+  createNewProject(requestParam) {
+    return this.httpclient.post(this.baseUrl + this.constantService.addProject, requestParam);
+  }
+
+  getProject() {
+    return this.httpclient.get(this.baseUrl + this.constantService.addProject);
+  }
+
   logout(requestParam) {
     return this.httpclient.post(this.baseUrl + this.constantService.loginurl, requestParam);
   }

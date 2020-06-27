@@ -12,4 +12,5 @@ export class ConstantService {
   loginurl = 'employee/login/';
   employee = 'employee/emp/';
   getDesignation = 'employee/designation/';
+  addProject = 'project/getaddproject/';
 }
