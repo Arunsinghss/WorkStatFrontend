@@ -60,10 +60,12 @@
         </div>
         <div class="col-md-6 form-group">
             <label for="designation">Designation</label>
+            <span class="float-right" (click)="openModal(designationModal)">create new designation</span>
             <!-- <input type="text" formControlName="designation" 
                  /> -->
-            <ng-select class="form-control" [items]="designation" bindLabel="label" bindValue="value" placeholder='Select designation'
-                [clearable]=true formControlName="designation" [ngClass]="{ 'is-invalid': submitted && f.designation.errors }">
+            <ng-select [items]="designation" bindLabel="name" bindValue="id" placeholder='Select designation'
+                [clearable]=true formControlName="designation"
+                [ngClass]="{ 'is-invalid': submitted && f.designation.errors }">
             </ng-select>
             <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
                 <div *ngIf="f.designation.errors.required">Designation is required</div>
@@ -81,3 +83,42 @@
     </div>
 
 </form>
+
+
+<ng-template #designationModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Designation</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="example-form" [formGroup]="designationForm" (ngSubmit)="designationFormSubmit()">
+        <div class="modal-body">
+            <div class="col-md-12 form-group">
+                <label for="username">Name</label>
+                <input type="text" formControlName="name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted1 && f1.name.errors }" />
+                <div *ngIf="submitted1 && f1.name.errors" class="invalid-feedback">
+                    <div *ngIf="f1.name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class=" col-md-12 form-group">
+                <label for="password">Designation</label>
+                <input type="text" formControlName="designation" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted1 && f1.designation.errors }" />
+                <div *ngIf="submitted1 && f1.designation.errors" class="invalid-feedback">
+                    <div *ngIf="f1.designation.errors.required">Designation is required</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Create
+                </button>
+            </div>
+        </div>
+    </form>
+</ng-template>

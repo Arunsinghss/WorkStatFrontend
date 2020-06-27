@@ -19,7 +19,7 @@ export class AuthgaurdService implements CanActivate {
     if (!this.isValid(userdetails)) {
       this.sharedService.logout();
       this.dataservices.setUserLoggedInStatus(false);
-      this.router.navigate(['auth/login'], { queryParams: currentUrl });
+      this.router.navigate(['login'], { queryParams: currentUrl });
       return false;
     } else {
       this.dataservices.setUserLoggedInStatus(true);

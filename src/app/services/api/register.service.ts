@@ -27,8 +27,8 @@ export class RegisterService {
     return this.httpclient.get(this.baseUrl + this.constantService.getDesignation);
   }
 
-  createDesignation() {
-    return this.httpclient.get(this.baseUrl + this.constantService.getDesignation);
+  createDesignation(requestParam) {
+    return this.httpclient.post(this.baseUrl + this.constantService.getDesignation, requestParam);
   }
 
   logout(requestParam) {
