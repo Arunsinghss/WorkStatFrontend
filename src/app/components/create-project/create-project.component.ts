@@ -72,6 +72,8 @@ export class CreateProjectComponent implements OnInit {
 
   update() {
     const param = this.projectForm.value;
+    param.start_date = this.getDateformat(param.start_date);
+    param.end_date = this.getDateformat(param.end_date);
     this.apiServices.assignProject(param, this.projectId).subscribe((res: any) => {
       Swal.fire({ icon: 'success', text: 'Updated Project', title: 'Success' });
       this.router.navigateByUrl('/projectlist');
