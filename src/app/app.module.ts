@@ -19,8 +19,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthgaurdService } from './services/auth/authgaurd.service';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor/interceptor.service';
+import { GetProjectComponent } from './components/get-project/get-project.component';
+import { EmployeelistComponent } from './components/employeelist/employeelist.component';
 // import { AgGridModule } from 'ag-grid-angular';
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     RegisterComponent,
     CreateProjectComponent,
     AddEmployeComponent,
-    ProfileComponent
+    ProfileComponent,
+    GetProjectComponent,
+    EmployeelistComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +48,7 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     FormsModule,
     HttpClientModule,
     CollapseModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     AuthgaurdService,

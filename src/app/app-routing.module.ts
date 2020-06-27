@@ -5,6 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
 import { AddEmployeComponent } from './components/add-employe/add-employe.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GetProjectComponent } from './components/get-project/get-project.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'add-project/:id', component: CreateProjectComponent },
   { path: 'add-employee', component: AddEmployeComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'projectlist', component: GetProjectComponent },
   // { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' },
