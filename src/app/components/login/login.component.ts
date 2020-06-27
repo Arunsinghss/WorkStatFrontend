@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { RegisterService } from 'src/app/services/api/register.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    // private authenticationService: AuthenticationService,
+    private apiService: RegisterService,
     // private alertService: AlertService
   ) {
     this.loginForm = this.formBuilder.group({
@@ -43,17 +42,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
-  //   this.loading = true;
-  //   this.authenticationService.login(this.f.username.value, this.f.password.value)
-  //     .pipe(first())
-  //     .subscribe(
-  //       data => {
-  //         this.router.navigate([this.returnUrl]);
-  //       },
-  //       error => {
-  //         // this.alertService.error(error);
-  //         this.loading = false;
-  //       });
+    const requestParam = this.loginForm.value;
+    this.apiService.login(requestParam).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 }

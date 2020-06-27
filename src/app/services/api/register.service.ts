@@ -19,9 +19,16 @@ export class RegisterService {
     return this.httpclient.post(this.baseUrl + this.constantService.loginurl, requestParam);
   }
 
-  // verify otp api call
-  verifyOtp(requestParam) {
-    return this.httpclient.post(this.baseUrl + this.constantService.loginurl, requestParam);
+  registerEmployee(requestParam) {
+    return this.httpclient.post(this.baseUrl + this.constantService.employee, requestParam);
+  }
+
+  getDesignation() {
+    return this.httpclient.get(this.baseUrl + this.constantService.getDesignation);
+  }
+
+  createDesignation() {
+    return this.httpclient.get(this.baseUrl + this.constantService.getDesignation);
   }
 
   logout(requestParam) {

@@ -17,7 +17,7 @@ import { CreateProjectComponent } from './components/create-project/create-proje
 import { AddEmployeComponent } from './components/add-employe/add-employe.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthgaurdService } from './services/auth/authgaurd.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './services/interceptor/interceptor.service';
 // import { AgGridModule } from 'ag-grid-angular';
 // import { NgxPaginationModule } from 'ngx-pagination';
@@ -42,6 +42,7 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     NgSelectModule,
     NgbModule,
     FormsModule,
+    HttpClientModule,
     CollapseModule.forRoot(),
   ],
   providers: [

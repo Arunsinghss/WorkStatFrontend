@@ -18,11 +18,11 @@
             </div>
         </div>
         <div class="col-md-6 form-group">
-            <label for="age">Age</label>
-            <input type="age" formControlName="password" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.age.errors }" />
-            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
-                <div *ngIf="f.age.errors.required">Age is required</div>
+            <label for="emp_age">Age</label>
+            <input type="number" formControlName="emp_age" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.emp_age.errors }" />
+            <div *ngIf="submitted && f.emp_age.errors" class="invalid-feedback">
+                <div *ngIf="f.emp_age.errors.required">Age is required</div>
             </div>
         </div>
         <div class="col-md-6 form-group">
@@ -51,17 +51,20 @@
             </div>
         </div>
         <div class="col-md-6 form-group">
-            <label for="experience">Experience</label>
-            <input type="text" formControlName="experience" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.experience.errors }" />
+            <label for="emp_exp">Experience</label>
+            <input type="text" formControlName="emp_exp" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.emp_exp.errors }" />
             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.experience.errors.required">Experience is required</div>
+                <div *ngIf="f.emp_exp.errors.required">Experience is required</div>
             </div>
         </div>
         <div class="col-md-6 form-group">
             <label for="designation">Designation</label>
-            <input type="text" formControlName="designation" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.designation.errors }" />
+            <!-- <input type="text" formControlName="designation" 
+                 /> -->
+            <ng-select class="form-control" [items]="designation" bindLabel="label" bindValue="value" placeholder='Select designation'
+                [clearable]=true formControlName="designation" [ngClass]="{ 'is-invalid': submitted && f.designation.errors }">
+            </ng-select>
             <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
                 <div *ngIf="f.designation.errors.required">Designation is required</div>
 

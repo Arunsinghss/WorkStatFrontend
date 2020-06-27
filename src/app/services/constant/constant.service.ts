@@ -9,6 +9,7 @@ export class ConstantService {
   // Api call url
 
   // login
-  loginurl = 'app/applogin/';
-
+  loginurl = 'employee/login/';
+  employee = 'employee/emp/';
+  getDesignation = 'employee/designation/';
 }
