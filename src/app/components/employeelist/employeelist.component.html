@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th class="th-sm">Employee Name</th>
+                            <th class="th-sm">email</th>
                             <th class="th-sm">Age</th>
                             <th class="th-sm">Experience</th>
                             <th class="th-sm">Designation</th>
@@ -21,12 +22,16 @@
                         </tr>
                     </thead>
                     <tbody *ngIf=" dataFromApi && dataFromApi.length >0 ">
-                        <tr *ngFor="let data of dataFromApi | paginate: { itemsPerPage: 5, currentPage: currentPage }">
-                            <td>{{data.name}}</td>
+                        <tr
+                            *ngFor="let data of dataFromApi | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+                            <td>{{data.user.first_name}} {{data.user.last_name}}</td>
+                            <td>{{data.user.email}}</td>
                             <td>{{data.emp_age}}</td>
                             <td>{{data.emp_exp}}</td>
-                            <td>{{data.designation}}</td>
-                            <td>Project Assigned</td>
+                            <td>{{data.designation.name}}</td>
+                            <td><span *ngFor="let project of data.assigned_projects let i=index;">
+                                    <p class="ml-1">{{i+1}} - {{project.name}}</p>
+                                </span></td>
                             <!-- <td>{{data.start_date | date: 'dd-MMM-yyyy'}}</td>
                             <td>{{data.end_date  | date: 'dd-MMM-yyyy'}}</td> -->
                         </tr>
