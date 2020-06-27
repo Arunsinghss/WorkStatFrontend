@@ -39,6 +39,10 @@ export class RegisterService {
     return this.httpclient.post(this.baseUrl + this.constantService.addProject, requestParam);
   }
 
+  assignProject(requestParam, id) {
+    return this.httpclient.patch(this.baseUrl + this.constantService.addProject + id + '/', requestParam);
+  }
+
   getProject() {
     return this.httpclient.get(this.baseUrl + this.constantService.addProject);
   }

@@ -29,7 +29,10 @@
                             <td>{{data.description}}</td>
                             <td>{{data.assigned_on | date: 'dd-MMM-yyyy'}}</td>
                             <td>{{data.assigned_by.name}}</td>
-                            <td><span *ngFor="let name of data.assigned_to let i=index;"><p>{{i + 1}}-{{name.name}}</p></span>
+                            <td (click)=openModal(designationModal,data.id)><span
+                                    *ngFor="let name of data.assigned_to let i=index;">
+                                    <p>{{i + 1}}-{{name.name}}</p>
+                                </span>
                             </td>
                             <td>{{data.is_completed}}</td>
                             <td>{{data.start_date | date: 'dd-MMM-yyyy'}}</td>
@@ -48,3 +51,43 @@
         </div>
     </div>
 </div>
+
+<ng-template #designationModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Assign Project To Employee</h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="example-form" [formGroup]="assignForm" (ngSubmit)="assignFormSubmit()">
+        <div class="modal-body">
+            <div class="col-md-12 form-group">
+                <label for="username">Employee Name</label>
+                <ng-select [items]="employeeName" bindLabel="user" bindValue="id" placeholder='Select employee'
+                    [clearable]=true formControlName="assigned_to" [multiple]="true"
+                    [ngClass]="{ 'is-invalid': submitted1 && f1.assigned_to.errors }">
+                </ng-select>
+                <div *ngIf="submitted1 && f1.assigned_to.errors" class="invalid-feedback">
+                    <div *ngIf="f1.assigned_to.errors.required">Name is required</div>
+                </div>
+            </div>
+            <!-- <div class=" col-md-12 form-group">
+                <label for="password">Designation</label>
+                <input type="text" formControlName="designation" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted1 && f1.designation.errors }" />
+                <div *ngIf="submitted1 && f1.designation.errors" class="invalid-feedback">
+                    <div *ngIf="f1.designation.errors.required">Designation is required</div>
+                </div>
+            </div> -->
+
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Create
+                </button>
+            </div>
+        </div>
+    </form>
+</ng-template>
