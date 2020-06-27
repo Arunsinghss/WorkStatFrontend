@@ -12,6 +12,7 @@ import { EmployeelistComponent } from './components/employeelist/employeelist.co
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'register/:id', component: RegisterComponent },
   { path: 'add-project', component: CreateProjectComponent },
   { path: 'add-project/:id', component: CreateProjectComponent },
   { path: 'add-employee', component: AddEmployeComponent },

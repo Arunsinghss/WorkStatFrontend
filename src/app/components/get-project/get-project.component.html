@@ -25,13 +25,14 @@
                     </thead>
                     <tbody *ngIf=" dataFromApi && dataFromApi.length >0 ">
                         <tr *ngFor="let data of dataFromApi | paginate: { itemsPerPage: 5, currentPage: currentPage }">
-                            <td [routerLink]="['/add-project/',data.id]">{{data.name}}</td>
+                            <td [routerLink]="['/add-project/',data.id]">{{data.name}} <span class="float-right bluecolor"><i class="fas fa-edit"></i></span></td>
                             <td>{{data.description}}</td>
                             <td>{{data.assigned_on | date: 'dd-MMM-yyyy'}}</td>
                             <td>{{data.assigned_by.name}}</td>
-                            <td (click)=openModal(designationModal,data.id)><span
-                                    *ngFor="let name of data.assigned_to let i=index;">
+                            <td><span *ngFor="let name of data.assigned_to let i=index;">
                                     <p>{{i + 1}}-{{name.name}}</p>
+                                </span>
+                                <span class="float-right bluecolor" (click)=openModal(designationModal,data.id)>Add user<i class="fa fa-pencil"></i>
                                 </span>
                             </td>
                             <td>{{data.is_completed}}</td>

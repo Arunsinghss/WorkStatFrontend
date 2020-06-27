@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/services/api/register.service';
 import Swal from 'sweetalert2';
@@ -14,10 +14,13 @@ export class CreateProjectComponent implements OnInit {
   loading = false;
   submitted = false;
   dataFromApiEmployee: any;
+  projectId: string;
+  editable = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private apiServices: RegisterService
+    private apiServices: RegisterService,
+    private route: ActivatedRoute,
   ) {
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -30,6 +33,11 @@ export class CreateProjectComponent implements OnInit {
   get f() { return this.projectForm.controls; }
 
   ngOnInit(): void {
+    this.projectId = this.route.snapshot.paramMap.get('id');
+    if (this.projectId) {
+      this.editable = true;
+      this.getProjectbyId();
+    }
   }
 
   onSubmit() {
@@ -52,9 +60,13 @@ export class CreateProjectComponent implements OnInit {
     return _moment(date).format('DD-MM-YYYY');
   }
 
-  getEmployee() {
-    this.apiServices.getEmployee().subscribe((data: any) => {
-      this.dataFromApiEmployee = data;
+  getProjectbyId() {
+    this.apiServices.getProjectbyId(this.projectId).subscribe((res: any) => {
+      this.projectForm.get('name').setValue(res.name);
+      this.projectForm.get('description').setValue(res.description);
+      this.projectForm.get('start_date').setValue(new Date(res.start_date));
+      this.projectForm.get('end_date').setValue(res.end_date);
+      console.log(res);
     });
   }
 }
