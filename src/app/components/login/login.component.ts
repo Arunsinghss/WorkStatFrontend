@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
       const tokenEncryptedString = CryptoTS.AES.encrypt(JSON.stringify(data.data.token), this.SECRET_KEY);
       localStorage.setItem('token', tokenEncryptedString.toString());
       Swal.fire({ icon: 'success', text: 'Success', title: 'You are Succesfull log in' });
+      this.router.navigate(['/profile']);
     });
   }
 }

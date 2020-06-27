@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class ShareService {
-  private SECRET_KEY = '786Qwe1Poi0aSd2lKj8zxD3mnB5786';
+  public SECRET_KEY = '786Qwe1Poi0aSd2lKj8zxD3mnB5786';
   private groupRole: BehaviorSubject<{}> = new BehaviorSubject<{}>({});
   public roles = this.groupRole.asObservable();
   work: any;
@@ -30,6 +30,13 @@ export class ShareService {
 
   getUserDetails() {
     const userDetails = localStorage.getItem('user_details');
+    const userDetailsdDecryptedBytes = CryptoTS.AES.decrypt(userDetails, this.SECRET_KEY);
+    const userDetailsDecryptedText = userDetailsdDecryptedBytes.toString(CryptoTS.enc.Utf8);
+    return JSON.parse(userDetailsDecryptedText);
+  }
+
+  getEmpDetails() {
+    const userDetails = localStorage.getItem('employee');
     const userDetailsdDecryptedBytes = CryptoTS.AES.decrypt(userDetails, this.SECRET_KEY);
     const userDetailsDecryptedText = userDetailsdDecryptedBytes.toString(CryptoTS.enc.Utf8);
     return JSON.parse(userDetailsDecryptedText);

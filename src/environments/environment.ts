@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  path: 'https://db268065ab5c.ngrok.io/'
+  path: 'http://localhost:8000/'
+  // path: 'https://arunsingh93.pythonanywhere.com/'
 };
 
 /*
