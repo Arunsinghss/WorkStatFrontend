@@ -16,6 +16,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
 import { AddEmployeComponent } from './components/add-employe/add-employe.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthgaurdService } from './services/auth/authgaurd.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor/interceptor.service';
 // import { AgGridModule } from 'ag-grid-angular';
 // import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
@@ -41,7 +44,14 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     CollapseModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    AuthgaurdService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

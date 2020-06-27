@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  path: 'https://db268065ab5c.ngrok.io/'
 };
