@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
     this.apiService.registerEmployee(requestParam).subscribe((data) => {
       if (data) {
         Swal.fire({ icon: 'success', text: 'Employee Created', title: 'Success' });
+        this.router.navigateByUrl('/employee-list');
       }
     });
   }

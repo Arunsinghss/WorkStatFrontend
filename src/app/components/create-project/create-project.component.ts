@@ -53,6 +53,7 @@ export class CreateProjectComponent implements OnInit {
     requestParam.end_date = this.getDateformat(requestParam.end_date);
     this.apiServices.createNewProject(requestParam).subscribe((data: any) => {
       Swal.fire({ icon: 'success', text: 'Added Project', title: 'Success' });
+      this.router.navigateByUrl('/projectlist');
     });
   }
 
@@ -64,9 +65,16 @@ export class CreateProjectComponent implements OnInit {
     this.apiServices.getProjectbyId(this.projectId).subscribe((res: any) => {
       this.projectForm.get('name').setValue(res.name);
       this.projectForm.get('description').setValue(res.description);
-      this.projectForm.get('start_date').setValue(new Date(res.start_date));
-      this.projectForm.get('end_date').setValue(res.end_date);
-      console.log(res);
+      this.projectForm.get('start_date').setValue(_moment(res.start_date).format('DD-MM-YYYY'));
+      this.projectForm.get('end_date').setValue(_moment(res.end_date).format('DD-MM-YYYY'));
+    });
+  }
+
+  update() {
+    const param = this.projectForm.value;
+    this.apiServices.assignProject(param, this.projectId).subscribe((res: any) => {
+      Swal.fire({ icon: 'success', text: 'Updated Project', title: 'Success' });
+      this.router.navigateByUrl('/projectlist');
     });
   }
 }
